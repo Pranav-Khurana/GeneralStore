@@ -1,0 +1,20 @@
+{% if item %}
+<table class="my-table table table-hover table-light table-striped">
+    <thead class="thead-dark">
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+    </thead>
+    <tbody>
+        {% for i in item %}
+        <tr class="text-dark">
+            <td>{{i.name}}</td>
+            <td>{{i.qty}}</td>
+            <td>&#8377; {{i.price}}</td>
+        </tr>
+        {% endfor %} 
+    </tbody>  
+</table>
+{% else %}
+<p>NO RESULT FOUND</p>
+{% endif %}
