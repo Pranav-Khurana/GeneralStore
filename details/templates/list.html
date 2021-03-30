@@ -23,8 +23,9 @@
     </tbody>  
 </table>
 
-{% if item|length > 10 %}
+
 <div class="pagination justify-content-center pb-2">
+    {% if item|length > 10 and page_obj|length > 5 %}
     {% if page_obj.has_previous %}
     <a class="prev btn" href="?page={{ page_obj.previous_page_number }}">Prev</a>
     {%else%}
@@ -36,6 +37,8 @@
     {%else%}
     <a class="prev btn disabled" href="">Next</a>
     {% endif %}
+    {% else %}
+    <a class="next btn" href="?page=1"><u>View Full List</u></a>
 </div>
 {% endif %}
 

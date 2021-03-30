@@ -36,7 +36,10 @@
     <!-- HEADER: NAVIGATION BAR -->
     <header class="my-header">
         <nav class="my-header navbar navbar-dark bg-dark mb-3 ">
-            <span class="navbar-brand sm-brand">General Needs</span>
+            <a class="navbar-brand " href="{% url 'contact' %}">
+                <h2 style="font-family: 'Permanent Marker', cursive;">General Needs</h2>
+            </a>
+    
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                     onkeyup="keyp(this.value)">
@@ -55,11 +58,11 @@
         {% include 'list.html' %}
     </div>
 
-    <!-- FOOTER: COPYRIGHT & DEVELOPER -->
-    <footer class="my-footer pb-1 pt-1">
-        <p>&copy; <a href="https://pranavkhurana.engineer">Pranav Khurana</a> <small class="text-muted"> <br> All Rights
-                Reserved 2020 </small></p>
-    </footer> 
+    <!-- FOOTER: COPYRIGHT & DEVELOPER 
+    <footer class="my-footer ">
+        <p>&copy; <a href="https://pranavkhurana.tech">Pranav Khurana</a> <small class="text-muted"> <br> All Rights
+                Reserved 2020 </small></p> -->
+    </footer>  
 
 </body>
 

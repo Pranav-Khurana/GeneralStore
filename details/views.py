@@ -56,8 +56,8 @@ def contact(request):
     page_obj = paginator.get_page(1)
 
     if request.GET.get('page'):
-        paginator = Paginator(search[5:], 10)
-        page_number = request.GET.get('page')
+        paginator = Paginator(search,10)
+        page_number = request.GET.get('page') 
         page_obj = paginator.get_page(page_number)
         html = "index.html"
         
