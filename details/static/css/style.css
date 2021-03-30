@@ -8,18 +8,37 @@
     background-blend-mode: screen;
 }
 
+.bg-contact {
+    position: relative; 
+    width: 100%;
+    background-color: rgba(199, 88, 162, 0.267);
+}
+
 /* FOOTER CSS */
 .my-footer {
     background-color: #212529;
     text-align: center;
     color: cornsilk;
     width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.my-thead {
+    position: -webkit-sticky;
+    flex: 0 0 auto;
 }
 
 .my-table {
     width: 90vw;
     margin-left: 5vw;
     margin-right: 5vw;
+}
+
+.no-result {
+    margin: 4vh;
+    text-align: center;
 }
 
 a {
@@ -37,13 +56,35 @@ a:hover, a:focus, a:active {
         text-align: center;
         align-items: center;
     }
-
 }
 
-@media only screen and (min-height: 585px) {
+@media only screen and (max-height: 815px) {
+    .replace {
+        height: 75vh;
+        overflow: scroll;
+    }
+} 
+
+@media only screen and (max-height: 650px) {
+    .replace {
+        height: 70vh;
+        overflow: scroll;
+    }
+} 
+
+@media only screen and (max-height: 450px) {
+    .replace {
+        height: 60vh;
+        overflow: scroll;
+    }
+} 
+
+
+
+/* @media only screen and (min-height: 750px) {
     .my-footer {
         position: fixed;
         left: 0;
         bottom: 0;
     } 
-}
+} */

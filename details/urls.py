@@ -4,6 +4,8 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    path('', views.list, name='index'),
-    #path('', TemplateView)
+    path('', views.contact, name='contact'),
+    #path('',TemplateView.as_view(template_name='contact.html'), name='home'),
+    #path('list/', views.list, name='index'),
+    #path('', views.list.as_view(), name='index')
 ] 

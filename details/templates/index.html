@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 
+
 <html lang="en">
 
 <head>
@@ -27,21 +28,27 @@
     <script type="text/javascript" src='{% static "/js/main.js" %}'></script>
 
 
-    <title>Grocery Store</title>
+    <title>General Needs</title>
 </head>
 
 <body class="bg">
 
     <!-- HEADER: NAVIGATION BAR -->
     <header class="my-header">
-        <nav class="my-header navbar navbar-expand-lg navbar-dark bg-dark mb-5 ">
-            <span class="navbar-brand sm-brand">Grocery Store</span>
+        <nav class="my-header navbar navbar-dark bg-dark mb-3 ">
+            <span class="navbar-brand sm-brand">General Needs</span>
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                     onkeyup="keyp(this.value)">
             </form>
         </nav>
-    </header>
+    </header>  
+
+    <!-- MAIN BODY: EXTENDED -->
+    <div>
+        {% block contactus %} 
+        {% endblock contactus %}
+    </div>
 
     <!-- MAIN BODY: EXTENDED -->
     <div class="replace">
@@ -50,8 +57,10 @@
 
     <!-- FOOTER: COPYRIGHT & DEVELOPER -->
     <footer class="my-footer pb-1 pt-1">
-        <p>&copy; <a href="https://pranavkhurana.engineer">Pranav Khurana</a> <small class="text-muted"> <br> All Rights Reserved 2020 </small></p>
-    </footer>
+        <p>&copy; <a href="https://pranavkhurana.engineer">Pranav Khurana</a> <small class="text-muted"> <br> All Rights
+                Reserved 2020 </small></p>
+    </footer> 
+
 </body>
 
 </html>

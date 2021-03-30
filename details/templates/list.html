@@ -1,12 +1,19 @@
-{% if item %}
+{% if page_obj %}
+
+{% if item|length > 10 and  page_obj|length > 5 %}
+<div class="current sm text-muted pb-1" align=center>
+    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} 
+</div>
+{% endif %}
+
 <table class="my-table table table-hover table-light table-striped">
-    <thead class="thead-dark">
+    <thead class="my-thead thead-dark">
             <th>Product</th>
             <th>Quantity</th>
             <th>Price</th>
     </thead>
     <tbody>
-        {% for i in item %}
+        {% for i in page_obj %}
         <tr class="text-dark">
             <td>{{i.name}}</td>
             <td>{{i.qty}}</td>
@@ -15,6 +22,23 @@
         {% endfor %} 
     </tbody>  
 </table>
+
+{% if item|length > 10 %}
+<div class="pagination justify-content-center pb-2">
+    {% if page_obj.has_previous %}
+    <a class="prev btn" href="?page={{ page_obj.previous_page_number }}">Prev</a>
+    {%else%}
+    <a class="prev btn disabled" href="">Prev</a>
+    {% endif %}
+
+    {% if page_obj.has_next %}
+    <a class="next btn" href="?page={{ page_obj.next_page_number }}">Next</a>
+    {%else%}
+    <a class="prev btn disabled" href="">Next</a>
+    {% endif %}
+</div>
+{% endif %}
+
 {% else %}
-<p>NO RESULT FOUND</p>
+<h3 class="no-result">NO RESULT FOUND</h3>
 {% endif %}

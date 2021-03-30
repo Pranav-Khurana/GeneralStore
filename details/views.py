@@ -40,29 +40,77 @@ class list(generic.ListView):
 
         return queryset
 '''
+def contact(request):
 
+    html = "contact.html"
+    context = {}
+    url_parameter = request.GET.get("q")
+
+    if url_parameter:
+        search = item.objects.filter(name__icontains=url_parameter).order_by('name')
+    else:
+        search = item.objects.all().order_by('name')
+
+     
+    paginator = Paginator(search, 5)
+    page_obj = paginator.get_page(1)
+
+    if request.GET.get('page'):
+        paginator = Paginator(search[5:], 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        html = "index.html"
+        
+
+    if request.is_ajax():
+        
+        paginator = Paginator(search, 10)
+        page_number = request.GET.get('page') 
+        page_obj = paginator.get_page(page_number)
+
+        html = render_to_string(
+            template_name="list.html", 
+            context={'page_obj':page_obj, 'item':search}
+        )
+
+        data_dict = {"search_result": html}   
+    
+        return JsonResponse(data=data_dict, safe=False)
+    
+    return render(request, html, {'page_obj':page_obj, 'item':search})
+
+
+
+'''
 def list(request):
 
     context = {}
     url_parameter = request.GET.get("q")
 
     if url_parameter:
-        search = item.objects.filter(name__icontains=url_parameter)
+        search = item.objects.filter(name__icontains=url_parameter).order_by('name')
     else:
-        search = item.objects.all()
+        search = item.objects.all().order_by('name')
 
-    context['item'] = search
-    
+     
+    paginator = Paginator(search, 10)
+    page_number = request.GET.get('page') 
+    page_obj = paginator.get_page(page_number)
 
     if request.is_ajax():
+        
+        paginator = Paginator(search, 10)
+        page_number = request.GET.get('page') 
+        page_obj = paginator.get_page(page_number)
+
         html = render_to_string(
             template_name="list.html", 
-            context={'item':search}
+            context={'page_obj':page_obj, 'item':search}
         )
 
-        data_dict = {"search_result": html}
-        
-
+        data_dict = {"search_result": html}   
+    
         return JsonResponse(data=data_dict, safe=False)
     
-    return render(request, "index.html", context=context)
+    return render(request, "index.html", {'page_obj':page_obj, 'item':search})
+'''

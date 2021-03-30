@@ -21,5 +21,4 @@ function keyp(val) {
     }
     // setTimeout returns the ID of the function to be executed
     scheduled_function = setTimeout(ajax_call, delay_by_in_ms, endpoint, request_parameters)
-    console.log('ajax started')
 }
